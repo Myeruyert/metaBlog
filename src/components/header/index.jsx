@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <>
       <div className="flex p-5 justify-between">
-        {/* <img src="./src/images/metabloglogo.png" alt="" /> */}
+        <img src="./metablogLogo.png" alt="" />
         <div>
           <FaBlogger />
         </div>
