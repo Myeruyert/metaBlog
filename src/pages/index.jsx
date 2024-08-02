@@ -9,7 +9,11 @@ import Hero from "@/components/hero/hero";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero 
+        articleType="Technology"
+        title="Grid system for better Design User Interface"
+        date="August 20, 2022"
+      />
       <Trending />
       <AllBlogPosts />
     </>
