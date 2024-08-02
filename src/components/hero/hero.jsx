@@ -1,0 +1,17 @@
+import React from "react";
+
+const Hero = () => {
+  return (
+    <>
+      <div className="hidden md:block relative w-3/5 m-auto">
+        <div>
+          <div className="rounded-xl my-24 bg-cover bg-no-repeat bg-center h-[600px] bg-[url('https://s3-alpha-sig.figma.com/img/eb4f/aad2/4394e91108e011b0d07581596959713b?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p895KkdD7DfcCulv8AGa6shbfkAQ13LytdYV4Wsw0PQ-FL22qhaG4o-eKbtZx7eC5DRPpiBpCGUpjA693ZOyVqMT2J470CF5oPujcq9NlJ3lWfW-JUAgxgQbjWqUjceO~P6LG5zQBnAXLsDlYyLfGZGXpGRAWM~PjK7cuD7ZeIWAB~9B25Ya0Qi6N8hGL5AmXlwT33Lqr3vmpMzULNrBhPpc~DCGFZ0rpAhc~vU7mdu7gEWoRMdWX1LA0jTsS3k~eM1KcmqcWGuHD0rhQ-KTBspRHuS7cVmwTdluAQNY5C0Tf2yC8pqCOm2771pFOW-2NiyECQSKSclX-GQ9714nJw__')]"></div>
+          <div></div>
+        </div>
+        <div></div>
+      </div>
+    </>
+  );
+};
+
+export default Hero;
