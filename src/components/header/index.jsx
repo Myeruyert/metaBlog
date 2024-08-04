@@ -22,6 +22,12 @@ const Header = () => {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
+            <li>
+            <Link href="/article">Article</Link>
+            </li>
+            <li>
+            <Link href="/error">Error</Link>
+            </li>
           </ul>
         </menu>
         <div className="md:hidden">
