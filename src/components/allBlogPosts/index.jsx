@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BlogCard from "./blogCard";
+import Categories from "./categories";
 
 const blogCardData = [
   {
@@ -28,6 +29,8 @@ const blogCardData = [
   },
 ];
 
+const category = [{category: "All"}, {category: "Design"}, {category: "Travel"}, {category: "Fashion"}, {category: "Technology"}, {category: "Branding"}]; 
+
 const AllBlogPosts = () => {
   const [changeData, setChangeData] = useState(blogCardData);
   return (
@@ -37,12 +40,9 @@ const AllBlogPosts = () => {
         <div className="hidden md:flex justify-between md:my-8 text-xs font-bold">
           <div>
             <ul className="flex gap-5">
-              <li className="text-[#D4A373]">All</li>
-              <li>Design</li>
-              <li>Travel</li>
-              <li>Fashion</li>
-              <li>Technology</li>
-              <li>Branding</li>
+              {category.map((cat)=> (
+                 <Categories category={cat.category}/>
+              ))}
             </ul>
           </div>
           <div>

@@ -19,3 +19,9 @@
     text-wrap: balance;
   }
 }
+
+.instaLogo:hover {
+  /* background: -webkit-linear-gradient(to right #405DE6, #5B51D8, #833AB4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}

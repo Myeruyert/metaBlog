@@ -4,6 +4,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { Work_Sans } from "next/font/google";
+import Link from "next/link";
 
 const work_sans = Work_Sans({
   subsets: ["latin"],
@@ -28,16 +29,18 @@ const Footer = () => {
               <b>Phone : </b> 880 123 456 789
             </p>
           </div>
-          <div className="flex flex-col text-base text-center gap-2">
-            <a href="">Home</a>
-            <a href="">Blog</a>
-            <a href="">Contact</a>
-          </div>
+         
+            <ul className="flex flex-col text-base text-center md:text-left gap-2">
+            <li > <Link href="/">Home</Link> </li>
+            <li ><Link href="/blog">Blog</Link></li>
+            <li ><Link href="/contact">Contact</Link></li>
+            </ul>
+          
           <div className="flex my-7 md:my-0 gap-7 text-zinc-500 w-fill">
-            <FaFacebook />
-            <FaTwitter />
-            <FaInstagram />
-            <FaLinkedin />
+            <FaFacebook className="hover:text-[#1877F2] hover:scale-125"/>
+            <FaTwitter className="hover:text-[#1DA1F2] hover:scale-125"/>
+            <FaInstagram className="instaLogo hover:scale-125"/>
+            <FaLinkedin className="hover:text-[#0077B5] hover:scale-125"/>
           </div>
           <div></div>
         </div>
