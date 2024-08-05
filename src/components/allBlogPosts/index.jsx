@@ -32,7 +32,7 @@ const AllBlogPosts = () => {
   const [changeData, setChangeData] = useState(blogCardData);
   return (
     <>
-      <div className="md:w-3/5 my-24 m-auto">
+      <div className="md:w-2/3 my-24 m-auto">
         <h3 className="text-2xl font-bold px-10 md:px-0 mt-8">All Blog Post</h3>
         <div className="hidden md:flex justify-between md:my-8 text-xs font-bold">
           <div>
@@ -62,9 +62,10 @@ const AllBlogPosts = () => {
           ))}
         </div>
         <div className="w-fit m-auto mt-24">
-        <button className="border rounded py-3 px-5 text-[#696A75] font-medium">Load More</button>
+          <button className="border rounded py-3 px-5 text-[#696A75] font-medium">
+            Load More
+          </button>
         </div>
-        
       </div>
     </>
   );

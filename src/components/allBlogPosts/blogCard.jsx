@@ -4,7 +4,8 @@ const BlogCard = ({ image, articleType, title, date }) => {
       <div className="m-10 p-4 md:m-0 border rounded-xl">
         <div className="">
           <img
-            className="h-[320px] md:h-[240px] m-auto rounded-xl"
+            className="w-full h-[320px] md:h-[240px] m-auto rounded-xl object-cover"
+            fill={true}
             src={image}
             alt=""
           />
