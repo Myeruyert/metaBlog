@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import Categories from "./categories";
 
@@ -31,8 +31,21 @@ const blogCardData = [
 
 const category = [{category: "All"}, {category: "Design"}, {category: "Travel"}, {category: "Fashion"}, {category: "Technology"}, {category: "Branding"}]; 
 
+
 const AllBlogPosts = () => {
-  const [changeData, setChangeData] = useState(blogCardData);
+  const [changeData, setChangeData] = useState([], blogCardData);
+  // const[articles, setArticles] = useState([]);
+
+  const getArticleData = async () => {
+      const response = await fetch("https://dev.to/api/articles?page=1&per_page=6"); 
+      const data = await response.json();
+      setChangeData(data)
+      console.log("data", data);
+      
+  }
+  useEffect( () => {
+      getArticleData()
+  }, [])
   return (
     <>
       <div className="md:w-2/3 my-24 m-auto">
@@ -54,10 +67,10 @@ const AllBlogPosts = () => {
         <div className="md:grid md:grid-cols-3 gap-4">
           {changeData.map((data) => (
             <BlogCard
-              image={data.image}
-              articleType={data.articleType}
+              image={data.social_image}
+              articleCategory={data.type_of}
               title={data.title}
-              date={data.date}
+              date={data.published_timestamp}
             />
           ))}
         </div>
