@@ -4,7 +4,7 @@ import React from "react";
 const Article = () => {
   return (
     <>
-        <ArticleInfo/>
+      <ArticleInfo />
     </>
   );
 };

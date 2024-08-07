@@ -1,6 +1,17 @@
-const BlogCard = ({ image, articleCategory, title, date }) => {
+import Link from "next/link";
+import { FaUserCircle } from "react-icons/fa";
+
+const BlogCard = ({
+  image,
+  articleCategory,
+  title,
+  date,
+  profileImage,
+  username,
+  id,
+}) => {
   return (
-    <>
+    <Link href={"/blogArticle/" + id}>
       <div className="m-10 p-4 md:m-0 border rounded-xl">
         <div className="">
           <img
@@ -16,10 +27,20 @@ const BlogCard = ({ image, articleCategory, title, date }) => {
             {articleCategory}
           </button>
           <h5 className="text-whit text-lg font-semibold">{title}</h5>
-          <p className="text-base text-gray-400 mt-5">{date}</p>
+          <div className="">
+            <div className="flex items-center gap-2">
+              <img
+                className="w-[28px] rounded-full"
+                src={profileImage}
+                alt=""
+              />
+              <span className="capitalize">{username}</span>
+            </div>
+            <p className="text-base text-gray-400 mt-5">{date}</p>
+          </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 

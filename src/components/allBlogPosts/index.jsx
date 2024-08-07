@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./blogCard";
-import Categories from "./categories";
+import Category from "./categories";
 
 const blogCardData = [
   {
@@ -29,23 +29,39 @@ const blogCardData = [
   },
 ];
 
-const category = [{category: "All"}, {category: "Design"}, {category: "Travel"}, {category: "Fashion"}, {category: "Technology"}, {category: "Branding"}]; 
-
+const allCategories = [
+  { category: "All" },
+  { category: "Design" },
+  { category: "Travel" },
+  { category: "Fashion" },
+  { category: "Technology" },
+  { category: "Branding" },
+  { category: "View All" },
+];
 
 const AllBlogPosts = () => {
-  const [changeData, setChangeData] = useState([], blogCardData);
+  const [changeData, setChangeData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const [count, setCount] = useState(0);
   // const[articles, setArticles] = useState([]);
 
   const getArticleData = async () => {
-      const response = await fetch("https://dev.to/api/articles?page=1&per_page=6"); 
-      const data = await response.json();
-      setChangeData(data)
-      console.log("data", data);
-      
-  }
-  useEffect( () => {
-      getArticleData()
-  }, [])
+    const response = await fetch(
+      "https://dev.to/api/articles?page=1&per_page=12"
+    );
+    const data = await response.json();
+    setChangeData(data);
+    console.log("data", data);
+  };
+  useEffect(() => {
+    getArticleData();
+  }, []);
+
+  const handleChange = (cat) => {
+    setSelectedCategory(cat);
+  };
+
   return (
     <>
       <div className="md:w-2/3 my-24 m-auto">
@@ -53,16 +69,21 @@ const AllBlogPosts = () => {
         <div className="hidden md:flex justify-between md:my-8 text-xs font-bold">
           <div>
             <ul className="flex gap-5">
-              {category.map((cat)=> (
-                 <Categories category={cat.category}/>
+              {allCategories.map((cat) => (
+                <Category
+                  selectedCategory={selectedCategory}
+                  category={cat.category}
+                  handleChange={handleChange}
+                  // isolateCategory={isolateCategory}
+                />
               ))}
             </ul>
           </div>
-          <div>
+          {/* <div>
             <ul>
               <li>View All</li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <div className="md:grid md:grid-cols-3 gap-4">
           {changeData.map((data) => (
@@ -71,11 +92,19 @@ const AllBlogPosts = () => {
               articleCategory={data.type_of}
               title={data.title}
               date={data.published_timestamp}
+              profileImage={data.user.profile_image}
+              username={data.user.username}
+              id={data.id}
             />
           ))}
         </div>
         <div className="w-fit m-auto mt-24">
-          <button className="border rounded py-3 px-5 text-[#696A75] font-medium">
+          <button
+            className="border rounded py-3 px-5 text-[#696A75] font-medium"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+          >
             Load More
           </button>
         </div>
