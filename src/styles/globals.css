@@ -8,20 +8,47 @@
   box-sizing: border-box;
 }
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-} */
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-.instaLogo:hover {
-  /* background: -webkit-linear-gradient(to right #405DE6, #5B51D8, #833AB4);
+/* .instaLogo:hover {
+  background: -webkit-linear-gradient(to right #405DE6, #5B51D8, #833AB4);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  -webkit-text-fill-color: transparent;
+} */
+
+.innerHtml img {
+  width:100%;
+  object-fit: cover;
+  object-position: center;
+  max-height: 70px;
+  border-radius: 12px;
+}
+
+.innerHtml h2 {
+  font-size: 2rem;
+}
+
+.innerHtml h3 {
+  font-size: 1.5rem;
+}
+
+.innerHtml .ltag__link {
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 10px;
+  margin: 0.95em 0 1.2em;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.innerHtml .ltag__link__pic {
+  width: 47px;
+}
+
+.innerHtml p {
+  margin: 12px 0;
 }

@@ -36,7 +36,6 @@ const allCategories = [
   { category: "Fashion" },
   { category: "Technology" },
   { category: "Branding" },
-  { category: "View All" },
 ];
 
 const AllBlogPosts = () => {
@@ -67,7 +66,6 @@ const AllBlogPosts = () => {
       <div className="md:w-2/3 my-24 m-auto">
         <h3 className="text-2xl font-bold px-10 md:px-0 mt-8">All Blog Post</h3>
         <div className="hidden md:flex justify-between md:my-8 text-xs font-bold">
-          <div>
             <ul className="flex gap-5">
               {allCategories.map((cat) => (
                 <Category
@@ -78,12 +76,9 @@ const AllBlogPosts = () => {
                 />
               ))}
             </ul>
-          </div>
-          {/* <div>
             <ul>
               <li>View All</li>
             </ul>
-          </div> */}
         </div>
         <div className="md:grid md:grid-cols-3 gap-4">
           {changeData.map((data) => (
