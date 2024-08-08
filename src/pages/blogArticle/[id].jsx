@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { FaUserCircle } from "react-icons/fa";
-import ArticleInfo from "@/components/articleInfo";
 
 const BlogArticleDetail = () => {
   const { query } = useRouter();
   const [articleDetail, setArticleDetail] = useState(null);
-  const [articleInfo, setArticleInfo] = useState([]);
 
   const getArticleById = async (id) => {
     const res = await fetch(`https://dev.to/api/articles/${id}`);
@@ -15,23 +12,27 @@ const BlogArticleDetail = () => {
   };
 
   useEffect(() => {
-    getArticleById(query.id);
-  }, []);
-
+    if (query.id) {
+      getArticleById(query.id);
+    }
+  }, [query.id]);
+  console.log("ad", articleDetail);
 
   return (
     <div className="w-2/5 m-auto my-24 text-justify innerHtml">
       <h1 className="w-full mb-5 text-4xl font-semibold leading-10 text-[#181A2A">
-        The Impact of Technology on the Workplace: How Technology is Changing
+        {articleDetail?.title}
       </h1>
       <div className="flex items-center gap-6 text-[#696A75] text-sm mb-8">
         <div className="flex items-center gap-2">
-          <span className="text-[28px]">
-            <FaUserCircle />
-          </span>
-          <span>Tracey Wilson</span>
+          <img
+            className="w-[20px] rounded-full"
+            src={articleDetail?.user.profile_image}
+            alt=""
+          />
+          <span className="capitalize">{articleDetail?.user.username}</span>
         </div>
-        <div>August 20, 2022</div>
+        <div>{articleDetail?.published_at}</div>
       </div>
       <div dangerouslySetInnerHTML={{ __html: articleDetail?.body_html }}></div>
     </div>

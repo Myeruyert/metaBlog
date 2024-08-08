@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Error = () => {
   return (
@@ -12,7 +13,7 @@ const Error = () => {
             looking for.
           </p>
           <button className="mt-[30px] py-[10px] px-4 border rounded-md bg-[#4B6BFB] text-white text-sm font-medium">
-            Back To Home
+            <Link href="/">Back To Home</Link>
           </button>
         </div>
       </div>

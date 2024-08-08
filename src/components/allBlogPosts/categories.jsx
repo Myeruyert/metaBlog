@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-const Category = ({
-  category,
-  selectedCategory,
-  handleChange,
-  isolateCategory,
-}) => {
+const Category = ({ category, selectedCategory, handleChange }) => {
   return (
     <>
       <li>

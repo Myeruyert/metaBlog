@@ -32,9 +32,6 @@ const Header = () => {
             {/* <li>
               <Link href="/blogArticle/">Article</Link>
             </li> */}
-            <li>
-              <Link href="/error">Error</Link>
-            </li>
           </ul>
         </menu>
         <div className="md:hidden">
