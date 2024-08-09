@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import Category from "./categories";
+import SearchBox from "../header/searchBox";
 
 const blogCardData = [
   {
@@ -41,24 +42,34 @@ const allCategories = [
 const AllBlogPosts = () => {
   const [changeData, setChangeData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const [count, setCount] = useState(0);
-  // const[articles, setArticles] = useState([]);
+  const [count, setCount] = useState(6);
+  const [searchText, setSearchText] = useState("");
 
   const getArticleData = async () => {
     const response = await fetch(
-      "https://dev.to/api/articles?page=1&per_page=12"
+      `https://dev.to/api/articles?page=1&per_page=${count}`
     );
     const data = await response.json();
     setChangeData(data);
     console.log("data", data);
   };
+
   useEffect(() => {
     getArticleData();
-  }, []);
+  }, [count]);
 
   const handleChange = (cat) => {
     setSelectedCategory(cat);
+  };
+
+  const searchHandleChange = (e) => {
+    console.log("e.target", e.target.value);
+    setSearchText(e.target.value);
+    const filteredArticles = changeData.filter((article) =>
+      article?.title.includes(e.target.value)
+    );
+    console.log("filteredArticles", filteredArticles);
+    setChangeData(filteredArticles);
   };
 
   return (
@@ -66,19 +77,24 @@ const AllBlogPosts = () => {
       <div className="md:w-2/3 my-24 m-auto">
         <h3 className="text-2xl font-bold px-10 md:px-0 mt-8">All Blog Post</h3>
         <div className="hidden md:flex justify-between md:my-8 text-xs font-bold">
-            <ul className="flex gap-5">
-              {allCategories.map((cat) => (
-                <Category
-                  selectedCategory={selectedCategory}
-                  category={cat.category}
-                  handleChange={handleChange}
-                  // isolateCategory={isolateCategory}
-                />
-              ))}
-            </ul>
-            <ul>
-              <li>View All</li>
-            </ul>
+          <ul className="flex gap-5">
+            {allCategories.map((cat) => (
+              <Category
+                selectedCategory={selectedCategory}
+                category={cat.category}
+                handleChange={handleChange}
+              />
+            ))}
+          </ul>
+          <ul>
+            <li>View All</li>
+          </ul>
+        </div>
+        <div className="my-10">
+          <SearchBox
+            searchHandleChange={searchHandleChange}
+            search={searchText}
+          />
         </div>
         <div className="md:grid md:grid-cols-3 gap-4">
           {changeData.map((data) => (
@@ -92,12 +108,13 @@ const AllBlogPosts = () => {
               id={data.id}
             />
           ))}
+          {!changeData && <p>Empty</p>}
         </div>
         <div className="w-fit m-auto mt-24">
           <button
             className="border rounded py-3 px-5 text-[#696A75] font-medium"
             onClick={() => {
-              setCount(count + 1);
+              setCount(count + 6);
             }}
           >
             Load More
