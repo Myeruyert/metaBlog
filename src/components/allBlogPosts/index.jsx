@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import Category from "./categories";
+import { SearchContext } from "@/provider/search-provider";
 import SearchBox from "../header/searchBox";
 
 const blogCardData = [
@@ -43,7 +44,7 @@ const AllBlogPosts = () => {
   const [changeData, setChangeData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [count, setCount] = useState(6);
-  const [searchText, setSearchText] = useState("");
+  const { searchValue } = useContext(SearchContext);
 
   const getArticleData = async () => {
     const response = await fetch(
@@ -62,15 +63,10 @@ const AllBlogPosts = () => {
     setSelectedCategory(cat);
   };
 
-  const searchHandleChange = (e) => {
-    console.log("e.target", e.target.value);
-    setSearchText(e.target.value);
-    const filteredArticles = changeData.filter((article) =>
-      article?.title.includes(e.target.value)
-    );
-    console.log("filteredArticles", filteredArticles);
-    setChangeData(filteredArticles);
-  };
+  const filteredArticles = changeData.filter((article) =>
+    article?.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  console.log("filtered article", filteredArticles);
 
   return (
     <>
@@ -90,14 +86,13 @@ const AllBlogPosts = () => {
             <li>View All</li>
           </ul>
         </div>
-        <div className="my-10">
-          <SearchBox
-            searchHandleChange={searchHandleChange}
-            search={searchText}
-          />
-        </div>
+        {/* <div>
+          <h2>
+            {searchValue}
+          </h2>
+        </div> */}
         <div className="md:grid md:grid-cols-3 gap-4">
-          {changeData.map((data) => (
+          {filteredArticles.map((data) => (
             <BlogCard
               image={data.social_image}
               articleCategory={data.type_of}
@@ -108,7 +103,6 @@ const AllBlogPosts = () => {
               id={data.id}
             />
           ))}
-          {!changeData && <p>Empty</p>}
         </div>
         <div className="w-fit m-auto mt-24">
           <button
