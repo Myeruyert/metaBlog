@@ -1,8 +1,8 @@
 const TrendingCard = ({ image, category, title }) => {
   return (
     <>
-      <div className="p-10 md:p-0 relative">
-        <div className="absolute left-3 bottom-3 right-4 z-10">
+      <div className="px-10 py-5 md:p-0 relative">
+        <div className="m-10 md:m-0 absolute left-3 bottom-3 right-4 z-10">
           <button className="py-1 px-2.5 rounded-lg bg-[#4B6BFB] text-white mb-4 font-medium text-xs">
             {category}
           </button>

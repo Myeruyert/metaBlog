@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import { Work_Sans } from "next/font/google";
 import MyProvider from "@/provider/provider";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import HeroProvider from "@/provider/hero_section_provider";
 
@@ -18,7 +19,7 @@ export default function App({ Component, pageProps }) {
           <div className={work_sans.className}>
             <Component {...pageProps} />
           </div>
-          <ToastContainer />
+          <ToastContainer/>
         </Layout>
       </HeroProvider>
     </MyProvider>

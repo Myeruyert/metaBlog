@@ -3,6 +3,7 @@ import BlogCard from "./blogCard";
 import Category from "./categories";
 import { MyContext } from "@/provider/provider";
 import Loader from "../loader";
+import LoaderCard from "../loader/loaderCard";
 
 const allCategories = [
   { category: "All" },
@@ -21,6 +22,7 @@ const AllBlogPosts = () => {
     handleChange,
     filteredArticles,
     isLoading,
+    changeData
   } = useContext(MyContext);
 
   return (
@@ -43,8 +45,11 @@ const AllBlogPosts = () => {
         </div>
         <div className="md:grid md:grid-cols-3 gap-4">
           {isLoading ? (
-            <Loader />
-          ) : (
+            filteredArticles.map(() => 
+            (<Loader />)
+          )
+  
+        ) : (
             filteredArticles.map((data) => (
               <BlogCard
                 image={data.social_image}
@@ -56,7 +61,7 @@ const AllBlogPosts = () => {
                 id={data.id}
               />
             ))
-          )}
+          )}  
         </div>
         <div className="w-fit m-auto mt-24">
           <button

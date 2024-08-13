@@ -24,14 +24,14 @@ const BlogArticleDetail = () => {
   console.log("ad", articleDetail);
 
   return (
-    <div className="w-2/5 m-auto my-24 text-justify innerHtml">
+    <div className="w-3/4 md:w-2/5 m-auto my-24 text-justify innerHtml">
       <h1 className="w-full mb-5 text-4xl font-semibold leading-10 text-[#181A2A">
         {articleDetail?.title}
       </h1>
-      <div className="flex items-center gap-6 text-[#696A75] text-sm mb-8">
+      <div className="md:flex items-center gap-6 text-[#696A75] text-sm mb-8">
         <div className="flex items-center gap-2">
           <img
-            className="w-[20px] rounded-full"
+            className="md:w-[50px] profile_img mb-[10px]"
             src={articleDetail?.user.profile_image}
             alt=""
           />

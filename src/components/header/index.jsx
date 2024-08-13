@@ -9,7 +9,7 @@ const work_sans = Work_Sans({
 });
 
 const Header = ({ search }) => {
-  const { setSearchValue } = useContext(MyContext);
+  const {setSearchValue} = useContext(MyContext);
 
   const searchHandleChange = (e) => {
     setSearchValue(e.target.value);
