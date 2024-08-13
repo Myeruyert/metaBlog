@@ -4,7 +4,6 @@ const inter = Inter({ subsets: ["latin"] });
 import Trending from "@/components/trendingCard";
 import AllBlogPosts from "@/components/allBlogPosts";
 import Hero from "@/components/hero/hero";
-import UseEffects from "@/components/useEffect";
 
 export default function Home() {
   return (

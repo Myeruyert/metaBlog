@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Source_Serif_4 } from "next/font/google";
+
+const source_serif_four = Source_Serif_4({
+  subsets: ["latin"],
+});
 
 const BlogArticleDetail = () => {
   const { query } = useRouter();
@@ -34,7 +39,10 @@ const BlogArticleDetail = () => {
         </div>
         <div>{articleDetail?.published_at}</div>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: articleDetail?.body_html }}></div>
+      <div
+        dangerouslySetInnerHTML={{ __html: articleDetail?.body_html }}
+        className={`${source_serif_four.className}`}
+      ></div>
     </div>
   );
 };

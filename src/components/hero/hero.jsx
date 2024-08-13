@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import SlideCard from "./slide-card";
+import { HeroContext } from "@/provider/hero_section_provider";
 
 const Hero = () => {
-  const [changeData, setChangeData] = useState([]);
-  const [clickNext, setClickNext] = useState(1);
+  // const [changeData, setChangeData] = useState([]);
+  // const [clickNext, setClickNext] = useState(1);
 
-  const getArticleData = async () => {
-    try {
-      const response = await fetch(
-        `https://dev.to/api/articles?page=1&per_page=${clickNext}`
-      );
-      const data = await response.json();
-      setChangeData(data);
-      console.log("data", data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  // const getArticleData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://dev.to/api/articles?page=${clickNext}&per_page=1`
+  //     );
+  //     const data = await response.json();
+  //     setChangeData(data);
+  //     console.log("data", data);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getArticleData();
-  }, [clickNext]);
+  // useEffect(() => {
+  //   getArticleData();
+  // }, [clickNext]);
+
+  const { changeData, clickNext, setClickNext } = useContext(HeroContext);
 
   return (
     <>
