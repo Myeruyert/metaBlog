@@ -8,12 +8,16 @@ const Hero = () => {
   const [clickNext, setClickNext] = useState(1);
 
   const getArticleData = async () => {
-    const response = await fetch(
-      `https://dev.to/api/articles?page=1&per_page=${clickNext}`
-    );
-    const data = await response.json();
-    setChangeData(data);
-    console.log("data", data);
+    try {
+      const response = await fetch(
+        `https://dev.to/api/articles?page=1&per_page=${clickNext}`
+      );
+      const data = await response.json();
+      setChangeData(data);
+      console.log("data", data);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   useEffect(() => {

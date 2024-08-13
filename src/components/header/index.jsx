@@ -2,17 +2,19 @@ import React, { useContext } from "react";
 import { IoMenuSharp } from "react-icons/io5";
 import Link from "next/link";
 import { Work_Sans } from "next/font/google";
-import { SearchContext } from "@/provider/search-provider";
+import { MyContext } from "@/provider/provider";
 
 const work_sans = Work_Sans({
   subsets: ["latin"],
 });
 
 const Header = ({ search }) => {
-  const { setSearchValue } = useContext(SearchContext);
+  const { setSearchValue } = useContext(MyContext);
+
   const searchHandleChange = (e) => {
     setSearchValue(e.target.value);
   };
+
   return (
     <>
       <div

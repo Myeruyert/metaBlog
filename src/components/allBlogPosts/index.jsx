@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import Category from "./categories";
-import { SearchContext } from "@/provider/search-provider";
-import SearchBox from "../header/searchBox";
+import { MyContext } from "@/provider/provider";
+import Loader from "../loader";
 
 const blogCardData = [
   {
@@ -41,32 +41,39 @@ const allCategories = [
 ];
 
 const AllBlogPosts = () => {
-  const [changeData, setChangeData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [count, setCount] = useState(6);
-  const { searchValue } = useContext(SearchContext);
+  // const [changeData, setChangeData] = useState([]);
+  // const [selectedCategory, setSelectedCategory] = useState("All");
+  // const [count, setCount] = useState(6);
+  const {
+    count,
+    setCount,
+    selectedCategory,
+    handleChange,
+    filteredArticles,
+    isLoading,
+  } = useContext(MyContext);
 
-  const getArticleData = async () => {
-    const response = await fetch(
-      `https://dev.to/api/articles?page=1&per_page=${count}`
-    );
-    const data = await response.json();
-    setChangeData(data);
-    console.log("data", data);
-  };
+  // const getArticleData = async () => {
+  //   const response = await fetch(
+  //     `https://dev.to/api/articles?page=1&per_page=${count}`
+  //   );
+  //   const data = await response.json();
+  //   setChangeData(data);
+  //   console.log("data", data);
+  // };
 
-  useEffect(() => {
-    getArticleData();
-  }, [count]);
+  // useEffect(() => {
+  //   getArticleData();
+  // }, [count]);
 
-  const handleChange = (cat) => {
-    setSelectedCategory(cat);
-  };
+  // const handleChange = (cat) => {
+  //   setSelectedCategory(cat);
+  // };
 
-  const filteredArticles = changeData.filter((article) =>
-    article?.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
-  console.log("filtered article", filteredArticles);
+  // const filteredArticles = changeData.filter((article) =>
+  //   article?.title.toLowerCase().includes(searchValue.toLowerCase())
+  // );
+  // console.log("filtered article", filteredArticles);
 
   return (
     <>
@@ -92,17 +99,21 @@ const AllBlogPosts = () => {
           </h2>
         </div> */}
         <div className="md:grid md:grid-cols-3 gap-4">
-          {filteredArticles.map((data) => (
-            <BlogCard
-              image={data.social_image}
-              articleCategory={data.type_of}
-              title={data.title}
-              date={data.published_timestamp}
-              profileImage={data.user.profile_image}
-              username={data.user.username}
-              id={data.id}
-            />
-          ))}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            filteredArticles.map((data) => (
+              <BlogCard
+                image={data.social_image}
+                articleCategory={data.type_of}
+                title={data.title}
+                date={data.published_timestamp}
+                profileImage={data.user.profile_image}
+                username={data.user.username}
+                id={data.id}
+              />
+            ))
+          )}
         </div>
         <div className="w-fit m-auto mt-24">
           <button
