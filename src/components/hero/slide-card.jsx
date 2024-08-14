@@ -1,8 +1,8 @@
 import React from "react";
 
-const SlideCard = ({ category, title, date, imgUrl }) => {
+const SlideCard = ({ category, title, date, imgUrl, index, currentIndex }) => {
   return (
-    <div className="relative">
+    <div className={`relative min-w-full`}>
       <div className="absolute bottom-3 left-3 z-10 p-10 bg-white rounded-xl w-[50%]">
         <button className="py-1 px-2.5 rounded-lg bg-[#4B6BFB] text-white mb-4 font-medium">
           {category}

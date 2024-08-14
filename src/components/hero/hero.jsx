@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import SlideCard from "./slide-card";
-import { HeroContext } from "@/provider/hero_section_provider";
+import { useHeroContext } from "@/provider/hero_section_provider";
 
 const Hero = () => {
   // const [changeData, setChangeData] = useState([]);
@@ -25,27 +25,42 @@ const Hero = () => {
   //   getArticleData();
   // }, [clickNext]);
 
-  const { changeData, clickNext, setClickNext } = useContext(HeroContext);
+  let { changeData, currentIndex, setCurrentIndex } = useHeroContext();
 
   return (
     <>
-      <div className="hidden md:block relative w-2/3 my-24 m-auto ">
-        {changeData.map((data) => (
-          <SlideCard
-            category={data.type_of}
-            title={data.title}
-            date={data.readable_publish_date}
-            imgUrl={data.social_image}
-          />
-        ))}
+      <div className="slideCard hidden md:block relative w-2/3 my-24 m-auto overflow-hidden">
+        <div
+          className="flex transition-all ease-out duration-150"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {changeData.map((data, i) => (
+            <SlideCard
+              category={data.type_of}
+              title={data.title}
+              date={data.readable_publish_date}
+              imgUrl={data.social_image}
+              currentIndex={currentIndex}
+              index={i}
+            />
+          ))}
+        </div>
+
+        {/* <SlideCard
+          category={changeData[clickNext]?.type_of}
+          title={changeData[clickNext]?.title}
+          date={changeData[clickNext]?.readable_publish_date}
+          imgUrl={changeData[clickNext]?.social_image}
+        /> */}
 
         <div className="flex justify-end gap-2 mt-2">
           <button
             className="border rounded p-2 text-[#696A75]"
             onClick={() => {
-              if (clickNext > 0) {
-                setClickNext(clickNext - 1);
-              }
+              currentIndex--;
+              if (currentIndex < 0) currentIndex = changeData.length - 1;
+              setCurrentIndex(currentIndex);
+
               console.log("prev");
             }}
           >
@@ -54,7 +69,9 @@ const Hero = () => {
           <button
             className="border rounded p-2 text-[#696A75]"
             onClick={() => {
-              setClickNext(clickNext + 1);
+              currentIndex++;
+              if (currentIndex === changeData.length) currentIndex = 0;
+              setCurrentIndex(currentIndex);
             }}
           >
             <GrNext />

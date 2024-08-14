@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TrendingCard from "./trendingCard";
+import { MyContext, useMyContext } from "@/provider/provider";
 
 const trendingCardData = [
   {

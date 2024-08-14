@@ -1,31 +1,36 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { getArticleData } from "@/fetch";
 
 export const HeroContext = createContext(null);
+export const useHeroContext = () => {
+  return useContext(HeroContext);
+};
 
 const HeroProvider = ({ children }) => {
   const [changeData, setChangeData] = useState([]);
-  const [clickNext, setClickNext] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getArticleData = async () => {
-    try {
-      const response = await fetch(
-        `https://dev.to/api/articles?page=${clickNext}&per_page=1`
-      );
-      const data = await response.json();
-      setChangeData(data);
-      console.log("data", data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  // const getArticleData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://dev.to/api/articles?page=1&per_page=5`
+  //     );
+  //     const data = await response.json();
+  //     setChangeData(data);
+  //     console.log("data", data);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
 
   useEffect(() => {
-    getArticleData();
-  }, [clickNext]);
+    getArticleData(5, setIsLoading, setChangeData);
+  }, []);
 
   return (
     <HeroContext.Provider
-      value={{ changeData, setChangeData, clickNext, setClickNext }}
+      value={{ changeData, setChangeData, currentIndex, setCurrentIndex }}
     >
       {children}
     </HeroContext.Provider>
