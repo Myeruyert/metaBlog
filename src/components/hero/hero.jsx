@@ -3,6 +3,7 @@ import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import SlideCard from "./slide-card";
 import { useHeroContext } from "@/provider/hero_section_provider";
+import { EmblaCarousel } from "../emblaCarousel";
 
 const Hero = () => {
   // const [changeData, setChangeData] = useState([]);
@@ -29,7 +30,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="slideCard hidden md:block relative w-2/3 my-24 m-auto overflow-hidden">
+      <div className="hidden md:block relative w-2/3 my-24 m-auto overflow-hidden">
         <div
           className="flex transition-all ease-out duration-150"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -78,6 +79,8 @@ const Hero = () => {
           </button>
         </div>
       </div>
+
+      <EmblaCarousel />
     </>
   );
 };

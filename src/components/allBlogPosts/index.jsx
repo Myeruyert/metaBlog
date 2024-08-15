@@ -46,7 +46,9 @@ const AllBlogPosts = () => {
             ? filteredArticles.map(() => <Loader />)
             : filteredArticles.map((data) => (
                 <BlogCard
-                  image={data.social_image}
+                  image={
+                    data.cover_image ? data.cover_image : "/images/mountain.png"
+                  }
                   articleCategory={data.type_of}
                   title={data.title}
                   date={data.published_timestamp}

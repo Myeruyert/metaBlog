@@ -16,7 +16,7 @@ const BlogCard = ({
           <img
             className="w-full h-[320px] md:h-[240px] m-auto rounded-xl object-cover"
             fill={true}
-            src={image}
+            src={`${image}`}
             alt=""
           />
         </div>

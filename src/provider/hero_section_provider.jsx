@@ -25,7 +25,7 @@ const HeroProvider = ({ children }) => {
   // };
 
   useEffect(() => {
-    getArticleData(5, setIsLoading, setChangeData);
+    getArticleData(9, setIsLoading, setChangeData);
   }, []);
 
   return (
