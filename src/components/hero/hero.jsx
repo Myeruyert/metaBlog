@@ -33,9 +33,9 @@ const Hero = () => {
       <div className="hidden md:block relative w-2/3 my-24 m-auto overflow-hidden">
         <div
           className="flex transition-all ease-out duration-150"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          // style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {changeData.map((data, i) => (
+          {/* {changeData.map((data, i) => (
             <SlideCard
               category={data.type_of}
               title={data.title}
@@ -44,7 +44,9 @@ const Hero = () => {
               currentIndex={currentIndex}
               index={i}
             />
-          ))}
+          ))} */}
+          <EmblaCarousel 
+          />
         </div>
 
         {/* <SlideCard
@@ -54,7 +56,7 @@ const Hero = () => {
           imgUrl={changeData[clickNext]?.social_image}
         /> */}
 
-        <div className="flex justify-end gap-2 mt-2">
+        {/* <div className="flex justify-end gap-2 mt-2">
           <button
             className="border rounded p-2 text-[#696A75]"
             onClick={() => {
@@ -77,10 +79,9 @@ const Hero = () => {
           >
             <GrNext />
           </button>
-        </div>
+        </div> */}
+        
       </div>
-
-      <EmblaCarousel />
     </>
   );
 };

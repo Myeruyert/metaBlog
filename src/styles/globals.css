@@ -60,11 +60,12 @@
 
 .embla {
   overflow: hidden;
-  width: 75%;
   margin: auto;
+
 }
 .embla__container {
   display: flex;
+
 }
 .embla__slide {
   flex: 0 0 100%;
