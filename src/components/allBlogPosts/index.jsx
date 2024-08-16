@@ -20,12 +20,13 @@ const AllBlogPosts = ({ posts }) => {
     selectedCategory,
     handleChange,
     isLoading,
-    searchValue,
+    filteredArticles, //ssr hiiher bol end duudah shaardlagagui
+    searchValue, //ssr hiiheer duudna -> filteree ajilluulahiin tuld
   } = useMyContext();
 
-  const filteredArticles = posts?.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  // const filteredArticles = posts?.filter((post) =>
+  //   post.title.toLowerCase().includes(searchValue.toLowerCase())
+  // );
 
   return (
     <>
