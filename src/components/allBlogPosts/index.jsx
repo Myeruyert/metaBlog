@@ -13,15 +13,19 @@ const allCategories = [
   { category: "Branding" },
 ];
 
-const AllBlogPosts = () => {
+const AllBlogPosts = ({ posts }) => {
   const {
     count,
     setCount,
     selectedCategory,
     handleChange,
-    filteredArticles,
     isLoading,
+    searchValue,
   } = useMyContext();
+
+  const filteredArticles = posts?.filter((post) =>
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <>
@@ -43,8 +47,8 @@ const AllBlogPosts = () => {
         </div>
         <div className="md:grid md:grid-cols-3 gap-4">
           {isLoading
-            ? filteredArticles.map(() => <Loader />)
-            : filteredArticles.map((data) => (
+            ? filteredArticles?.map(() => <Loader />)
+            : filteredArticles?.map((data) => (
                 <BlogCard
                   image={
                     data.cover_image ? data.cover_image : "/images/mountain.png"
@@ -57,6 +61,20 @@ const AllBlogPosts = () => {
                   id={data.id}
                 />
               ))}
+
+          {/* {posts.map((data) => (
+            <BlogCard
+              image={
+                data.cover_image ? data.cover_image : "/images/mountain.png"
+              }
+              articleCategory={data.type_of}
+              title={data.title}
+              date={data.published_timestamp}
+              profileImage={data.user.profile_image}
+              username={data.user.username}
+              id={data.id}
+            />
+          ))} */}
         </div>
         <div className="w-fit m-auto mt-24">
           <button

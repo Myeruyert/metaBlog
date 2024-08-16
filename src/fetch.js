@@ -15,3 +15,14 @@ export const getArticleData = async (count, setIsLoading, setChangeData) => {
     // toast.error("Network error. Please try again");
   }
 };
+
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     `https://dev.to/api/articles?page=1&per_page=${count}`
+//   );
+//   const posts = await res.json();
+
+//   return {
+//     props: { posts },
+//   };
+// }
