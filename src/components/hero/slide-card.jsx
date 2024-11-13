@@ -5,6 +5,7 @@ const SlideCard = ({
   title,
   date,
   imgUrl,
+  tags,
   index,
   currentIndex,
   scrollPrev,
@@ -13,7 +14,7 @@ const SlideCard = ({
     <div className={`relative min-w-full`}>
       <div className="absolute bottom-3 left-3 z-10 p-10 bg-white rounded-xl w-[50%]">
         <button className="py-1 px-2.5 rounded-lg bg-[#4B6BFB] text-white mb-4 font-medium">
-          {category}
+          {tags[0] ? tags[0] : category}
         </button>
         <h1 className="text-4xl font-semibold pr-15">{title}</h1>
         <p className="text-base text-gray-400 mt-5">{date}</p>

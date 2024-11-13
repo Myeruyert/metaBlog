@@ -29,6 +29,7 @@ export function EmblaCarousel() {
               title={data.title}
               date={data.readable_publish_date}
               imgUrl={data.social_image}
+              tags={data.tag_list}
             />
           </div>
         ))}
