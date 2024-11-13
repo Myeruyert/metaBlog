@@ -6,7 +6,7 @@ import Link from "next/link";
 const trendingCardData = [
   {
     image: "/images/mountain.png",
-    category: "Technology",
+    category: "Article",
     title:
       "The Impact of Technology on the Workplace: How Technology is Changing",
   },
@@ -46,9 +46,10 @@ const Trending = () => {
               image={
                 data.cover_image ? data.cover_image : "/images/mountain.png"
               }
-              category={data.category}
+              category={trendingCardData[0].category}
               title={data.title}
               id={data.id}
+              tags={data.tag_list}
             />
           ))}
         </div>

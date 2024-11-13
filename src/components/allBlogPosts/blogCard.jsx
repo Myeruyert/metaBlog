@@ -26,7 +26,9 @@ const BlogCard = ({
           <button className="py-1 px-2.5 rounded-lg bg-slate-100 text-[#4B6BFB] mb-4 font-medium capitalize">
             {tags[0] ? tags[0] : articleCategory}
           </button>
-          <h5 className="text-whit text-lg font-semibold">{title}</h5>
+          <h5 className="text-whit text-lg font-semibold">
+            {title.length > 60 ? title.substring(0, 35) + "..." : title}
+          </h5>
           <div className="">
             <div className="flex items-center gap-2">
               <img
