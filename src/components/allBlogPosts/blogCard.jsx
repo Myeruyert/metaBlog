@@ -7,6 +7,7 @@ const BlogCard = ({
   date,
   profileImage,
   username,
+  tags,
   id,
 }) => {
   return (
@@ -23,7 +24,7 @@ const BlogCard = ({
 
         <div className="mt-4 p-2">
           <button className="py-1 px-2.5 rounded-lg bg-slate-100 text-[#4B6BFB] mb-4 font-medium capitalize">
-            {articleCategory}
+            {tags[0] ? tags[0] : articleCategory}
           </button>
           <h5 className="text-whit text-lg font-semibold">{title}</h5>
           <div className="">
@@ -35,7 +36,9 @@ const BlogCard = ({
               />
               <span className="capitalize">{username}</span>
             </div>
-            <p className="text-base text-gray-400 mt-5">{date}</p>
+            <p className="text-base text-gray-400 mt-5">
+              {new Date(date).toLocaleDateString()}
+            </p>
           </div>
         </div>
       </div>

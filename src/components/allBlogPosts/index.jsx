@@ -60,6 +60,7 @@ const AllBlogPosts = ({ posts }) => {
                   profileImage={data.user.profile_image}
                   username={data.user.username}
                   id={data.id}
+                  tags={data.tag_list}
                 />
               ))}
 
@@ -82,8 +83,7 @@ const AllBlogPosts = ({ posts }) => {
             className="border rounded py-3 px-5 text-[#696A75] font-medium"
             onClick={() => {
               setCount(count + 6);
-            }}
-          >
+            }}>
             Load More
           </button>
         </div>

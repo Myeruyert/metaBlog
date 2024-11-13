@@ -1,32 +1,29 @@
 import React, { useContext, useState } from "react";
 import TrendingCard from "./trendingCard";
 import { MyContext, useMyContext } from "@/provider/provider";
+import Link from "next/link";
 
 const trendingCardData = [
   {
-    image:
-      "/images/mountain.png",
+    image: "/images/mountain.png",
     category: "Technology",
     title:
       "The Impact of Technology on the Workplace: How Technology is Changing",
   },
   {
-    image:
-      "/images/computer.png",
+    image: "/images/computer.png",
     category: "Technology",
     title:
       "The Impact of Technology on the Workplace: How Technology is Changing",
   },
   {
-    image:
-      "images/image3.png",
+    image: "images/image3.png",
     category: "Technology",
     title:
       "The Impact of Technology on the Workplace: How Technology is Changing",
   },
   {
-    image:
-    "images/image4.png",
+    image: "images/image4.png",
     category: "Technology",
     title:
       "The Impact of Technology on the Workplace: How Technology is Changing",
@@ -34,7 +31,9 @@ const trendingCardData = [
 ];
 
 const Trending = () => {
-  const [changeData, setChangeData] = useState(trendingCardData);
+  // const [changeData, setChangeData] = useState(trendingCardData);
+  const { changeData } = useMyContext();
+
   return (
     <>
       <div className="md:w-2/3 m-auto">
@@ -42,11 +41,14 @@ const Trending = () => {
           Trending
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-4 md:gap-5">
-          {changeData.map((data) => (
+          {changeData?.slice(2, 6).map((data) => (
             <TrendingCard
-              image={data.image}
+              image={
+                data.cover_image ? data.cover_image : "/images/mountain.png"
+              }
               category={data.category}
               title={data.title}
+              id={data.id}
             />
           ))}
         </div>
